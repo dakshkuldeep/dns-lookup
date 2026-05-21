@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ll_hashtable.h"
+#include "ll_hashtable.c"
 
 int main() {
 
@@ -27,7 +27,6 @@ int main() {
         switch(choice) {
 
             case 1:
-
                 printf("Enter domain name: ");
                 scanf("%s", domain);
 
@@ -37,52 +36,40 @@ int main() {
                 insert_ht(dns, domain, ip);
 
                 printf("DNS record inserted.\n");
-
                 break;
 
-            case 2: {
-
+            case 2:
                 printf("Enter domain name: ");
                 scanf("%s", domain);
 
                 char *result = search_ht(dns, domain);
 
-                if(strcmp(result, "!") == 0) {
+                if(strcmp(result, "!") == 0)
                     printf("Domain not found.\n");
-                } else {
+                else
                     printf("IP Address: %s\n", result);
-                }
-
+                    
                 break;
-            }
 
             case 3:
-
                 printf("Enter domain name: ");
                 scanf("%s", domain);
 
                 rmfrom_ht(dns, domain);
 
                 printf("Record deleted if it existed.\n");
-
                 break;
 
             case 4:
-
                 dump_ht(dns);
-
                 break;
 
             case 5:
-
                 dns = delete_ht(dns);
-
                 printf("Exiting...\n");
-
                 return 0;
 
             default:
-
                 printf("Invalid choice.\n");
         }
     }

@@ -2,7 +2,16 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "ll_hashtable.h"
+typedef struct item {
+    char *key;
+    char *value;
+    struct item *next;
+} item;
+
+typedef struct {
+    int size;
+    item **items;
+} hashtable;
 
 #define LARGE_PRIME 173
 
@@ -117,7 +126,7 @@ static void delete_item_list(item *head_item) {
 	while(head_item != NULL) {
 		item *next = head_item->next;
 		delete_item(head_item);
-		head_item = next; 
+		head_item = next;
 	}
 }
 
