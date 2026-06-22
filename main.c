@@ -5,7 +5,7 @@
 
 int main() {
 
-    hashtable *dns = create_ht(100);
+    hashtable *dns = create_ht(50);
 
     int choice;
 
@@ -22,7 +22,11 @@ int main() {
         printf("5. Exit\n");
 
         printf("Enter choice: ");
-        scanf("%d", &choice);
+        if (scanf("%d", &choice) != 1) {
+            printf("Invalid choice.\n");
+            while(getchar() != '\n');
+            continue;
+        }
 
         switch(choice) {
 
