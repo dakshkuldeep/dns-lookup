@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#define LARGE_PRIME 173
+
 typedef struct item {
     char *key;
     char *value;
@@ -12,8 +14,6 @@ typedef struct {
     int size;
     item **items;
 } hashtable;
-
-#define LARGE_PRIME 173
 
 static int hash(const char *str, const int size) {
     unsigned long hash = 0;
